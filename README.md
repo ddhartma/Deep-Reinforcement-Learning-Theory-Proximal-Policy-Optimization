@@ -11,6 +11,9 @@
 [image11]: assets/11.png
 [image12]: assets/12.png
 [image13]: assets/13.png
+[image14]: assets/14.png
+[image15]: assets/15.png
+[image16]: assets/16.png
 
 # Deep Reinforcement Learning Theory - Proximal Policy Optimization
 
@@ -23,7 +26,8 @@
 - [Credit Assignement](#credit)
 - [Pong with REINFORCE](#pong)
 - [Importance Sampling](#imp_samp)
-- [PPO](#ppo)
+- [Proximal Policy Optimization - PPO](#ppo)
+- [PPO with Clipping](#ppo_clip)
 - [Pong with PPO](#pong_ppo)
 - [Setup Instructions](#Setup_Instructions)
 - [Acknowledgments](#Acknowledgments)
@@ -636,8 +640,30 @@
 
     ![image10]
 
-## PPO <a name="ppo"></a> 
+## Proximal Policy Optimization - PPO <a name="ppo"></a> 
+- How does Proximal Policy Optimization work?
 
+    ![image12]
+
+- The Surrogate Function
+
+    ![image13]
+
+## PPO with Clipping - PPO <a name="ppo_clip"></a> 
+- **Clip** the Surrogate function to ensure that **the new policy remains close to the old one**
+- **Continually updating the policy** via gradient ascent could lead to a **cliff** --> The Policy/Reward Cliff
+- This could lead to a really bad policy that is very hard to recover from
+
+    ![image14]
+
+- How to fix this?
+
+    ![image15]
+
+### Summary
+- We can finally summarize the PPO algorithm
+
+    ![image16]
 
 ## Pong with PPO <a name="pong_ppo"></a> 
 
