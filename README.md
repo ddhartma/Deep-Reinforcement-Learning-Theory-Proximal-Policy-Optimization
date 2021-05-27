@@ -14,6 +14,8 @@
 [image14]: assets/14.png
 [image15]: assets/15.png
 [image16]: assets/16.png
+[image17]: assets/17.png
+[image18]: assets/18.png
 
 # Deep Reinforcement Learning Theory - Proximal Policy Optimization
 
@@ -630,6 +632,29 @@
         
     timer.finish()
     ```
+    ### Watch a trained agent
+    ```
+    # play game after training!
+    pong_utils.play(env, policy, time=2000) 
+    ```
+
+    ![image9]
+
+    ### Mean Rewards
+
+    ![image18]
+
+    ### Save your Policy
+    ```
+    # save your policy!
+    torch.save(policy, 'REINFORCE.policy')
+
+    # load your policy if needed
+    # policy = torch.load('REINFORCE.policy')
+
+    # try and test out the solution!
+    # policy = torch.load('PPO_solution.policy')
+    ```
 
 ## Importance Sampling <a name="imp_samp"></a> 
 - How does a normal policy Update work in REINFORCE so far?
@@ -1041,6 +1066,7 @@
     ```
     pong_utils.play(env, policy, time=200) 
     ```
+    ![image17]
     ### Save Policy
     ```
     # save your policy!
