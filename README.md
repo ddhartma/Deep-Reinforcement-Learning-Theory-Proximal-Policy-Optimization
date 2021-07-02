@@ -35,7 +35,7 @@
 - [Acknowledgments](#Acknowledgments)
 - [Further Links](#Further_Links)
 
-## Introduction <a name="what_is_reinforcement"></a>
+## Introduction <a id="what_is_reinforcement"></a>
 - Reinforcement learning is **learning** what to do — **how to map situations to actions** — so as **to maximize a numerical reward** signal. The learner is not told which actions to take, but instead must discover which actions yield the most reward by trying them. (Sutton and Barto, [Reinforcement Learning: An Introduction](http://incompleteideas.net/book/the-book.html))
 - Deep reinforcement learning refers to approaches where the knowledge is represented with a deep neural network
 
@@ -58,16 +58,16 @@
     - how to combine value-based and policy-based methods
     - bringing together the best of both worlds, to solve challenging reinforcement learning problems
 
-## REINFORCE <a name="reinforce"></a> 
+## REINFORCE <a id="reinforce"></a> 
 - Brief review of the REINFORCE algorithm. 
     ![image1]
 
-## Problems of REINFORCE <a name="problems"></a> 
+## Problems of REINFORCE <a id="problems"></a> 
 - **Inefficient update process**! Run the policy once, update once, and then throw away the trajectory.
 - The gradient estimate **g** is very **noisy**. 
 - There is **no clear credit assignment**. A trajectory may contain many good/bad actions and whether these actions are reinforced depends only on the final total output.
 
-## Noise Reduction <a name="noise_red"></a> 
+## Noise Reduction <a id="noise_red"></a> 
 - Optimize the policy by maximizing the average rewards **U(θ)**. 
 - To do that: use **stochastic gradient ascent**. 
 - Gradient is given by an **average over all the possible trajectories**:
@@ -82,13 +82,13 @@
 
     ![image3]
 
-## Rewards Normalization <a name="rewards_norm"></a> 
+## Rewards Normalization <a id="rewards_norm"></a> 
 - There is another bonus for running multiple trajectories: we can collect all the total rewards and get a sense of how they are distributed.
 - Learning can be improved by normalization of rewards, where **μ** the mean, and **σ** the standard deviation.
 
     ![image4]
 
-## Credit Assignement <a name="credit"></a>
+## Credit Assignement <a id="credit"></a>
 - Going back to the gradient estimate, we can take a closer look at the total reward **R**, which is just a sum of reward at each step **R = r<sub>1</sub> + r<sub>1</sub> +...+ r<sub>t-1</sub> + r<sub>t</sub> +...**
 - At time-step **t**: Even before an action is decided, the agent has already received all the rewards up until step **t−1** (reward from the past). The rest is denoted as the future reward. 
 
@@ -124,7 +124,7 @@
     - Total reward (2) vs. future rward give the same policy gradient
 
 
-## Pong with REINFORCE <a name="pong"></a> 
+## Pong with REINFORCE <a id="pong"></a> 
 - Open Jupyter Notebook ```pong_reinforce.ipynb```
 - Try to teach an agent playing Pong by using only the pixels
 - PongDeterministic-v4 does not contain random frameskipping --> less noise, easier to train
@@ -656,7 +656,7 @@
     # policy = torch.load('PPO_solution.policy')
     ```
 
-## Importance Sampling <a name="imp_samp"></a> 
+## Importance Sampling <a id="imp_samp"></a> 
 - How does a normal policy Update work in REINFORCE so far?
 
     ![image11]
@@ -665,7 +665,7 @@
 
     ![image10]
 
-## Proximal Policy Optimization - PPO <a name="ppo"></a> 
+## Proximal Policy Optimization - PPO <a id="ppo"></a> 
 - How does Proximal Policy Optimization work?
 
     ![image12]
@@ -674,7 +674,7 @@
 
     ![image13]
 
-## PPO with Clipping - PPO <a name="ppo_clip"></a> 
+## PPO with Clipping - PPO <a id="ppo_clip"></a> 
 - **Clip** the Surrogate function to ensure that **the new policy remains close to the old one**
 - **Continually updating the policy** via gradient ascent could lead to a **cliff** --> The Policy/Reward Cliff
 - This could lead to a really bad policy that is very hard to recover from
@@ -690,7 +690,7 @@
 
     ![image16]
 
-## Pong with PPO <a name="pong_ppo"></a> 
+## Pong with PPO <a id="pong_ppo"></a> 
 - Open Jupyter Notebook ```pong_ppo.ipynb```
     ### Install package for displaying animation
     ```
@@ -1084,12 +1084,12 @@
     ```
 
 
-## Setup Instructions <a name="Setup_Instructions"></a>
+## Setup Instructions <a id="Setup_Instructions"></a>
 The following is a brief set of instructions on setting up a cloned repository.
 
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes.
 
-### Prerequisites: Installation of Python via Anaconda and Command Line Interaface <a name="Prerequisites"></a>
+### Prerequisites: Installation of Python via Anaconda and Command Line Interaface <a id="Prerequisites"></a>
 - Install [Anaconda](https://www.anaconda.com/distribution/). Install Python 3.7 - 64 Bit
 
 - Upgrade Anaconda via
@@ -1103,7 +1103,7 @@ $ conda upgrade --all
 $ export PATH="/path/to/anaconda/bin:$PATH"
 ```
 
-### Clone the project <a name="Clone_the_project"></a>
+### Clone the project <a id="Clone_the_project"></a>
 - Open your Command Line Interface
 - Change Directory to your project older, e.g. `cd my_github_projects`
 - Clone the Github Project inside this folder with Git Bash (Terminal) via:
@@ -1140,10 +1140,10 @@ pyspark = 2.4.3
 $ conda env list
 ```
 
-## Acknowledgments <a name="Acknowledgments"></a>
-* This project is part of the Udacity Nanodegree program 'Data Science'. Please check this [link](https://www.udacity.com) for more information.
+## Acknowledgments <a id="Acknowledgments"></a>
+* This project is part of the Udacity Nanodegree program 'Deep Reinforcement Learning'. Please check this [link](https://www.udacity.com) for more information.
 
-## Further Links <a name="Further_Links"></a>
+## Further Links <a id="Further_Links"></a>
 
 Git/Github
 * [GitFlow](https://datasift.github.io/gitflow/IntroducingGitFlow.html)
@@ -1157,9 +1157,38 @@ Docstrings, DRY, PEP8
 
 Further Deep Reinforcement Learning References
 * [Very good summary of DQN](https://medium.com/@nisheed/udacity-deep-reinforcement-learning-project-1-navigation-d16b43793af5)
+* [An Introduction to Deep Reinforcement Learning](https://thomassimonini.medium.com/an-introduction-to-deep-reinforcement-learning-17a565999c0c)
+* Helpful medium blog post on policies [Off-policy vs On-Policy vs Offline Reinforcement Learning Demystified!](https://kowshikchilamkurthy.medium.com/off-policy-vs-on-policy-vs-offline-reinforcement-learning-demystified-f7f87e275b48)
+* [Understanding Baseline Techniques for REINFORCE](https://medium.com/@fork.tree.ai/understanding-baseline-techniques-for-reinforce-53a1e2279b57)
 * [Cheatsheet](https://raw.githubusercontent.com/udacity/deep-reinforcement-learning/master/cheatsheet/cheatsheet.pdf)
+* [Reinforcement Learning Cheat Sheet](https://towardsdatascience.com/reinforcement-learning-cheat-sheet-2f9453df7651)
 * [Reinforcement Learning Textbook](https://s3-us-west-1.amazonaws.com/udacity-drlnd/bookdraft2018.pdf)
 * [Reinforcement Learning Textbook - GitHub Repo to Python Examples](https://github.com/ShangtongZhang/reinforcement-learning-an-introduction)
 * [Udacity DRL Github Repository](https://github.com/udacity/deep-reinforcement-learning)
 * [Open AI Gym - Installation Guide](https://github.com/openai/gym#installation)
 * [Deep Reinforcement Learning Nanodegree Links](https://docs.google.com/spreadsheets/d/19jUvEO82qt3itGP3mXRmaoMbVOyE6bLOp5_QwqITzaM/edit#gid=0)
+
+Important publications
+* [2004 Y. Ng et al., Autonomoushelicopterflightviareinforcementlearning --> Inverse Reinforcement Learning](https://people.eecs.berkeley.edu/~jordan/papers/ng-etal03.pdf)
+* [2004 Kohl et al., Policy Gradient Reinforcement Learning for FastQuadrupedal Locomotion --> Policy Gradient Methods](https://www.cs.utexas.edu/~pstone/Papers/bib2html-links/icra04.pdf)
+* [2013-2015, Mnih et al. Human-level control through deep reinforcementlearning --> DQN](https://storage.googleapis.com/deepmind-media/dqn/DQNNaturePaper.pdf)
+* [2014, Silver et al., Deterministic Policy Gradient Algorithms --> DPG](http://proceedings.mlr.press/v32/silver14.html)
+* [2015, Lillicrap et al., Continuous control with deep reinforcement learning --> DDPG](https://arxiv.org/abs/1509.02971)
+* [2015, Schulman et al, High-Dimensional Continuous Control Using Generalized Advantage Estimation --> GAE](https://arxiv.org/abs/1506.02438)
+* [2016, Schulman et al., Benchmarking Deep Reinforcement Learning for Continuous Control --> TRPO and GAE](https://arxiv.org/abs/1604.06778)
+* [2017, PPO](https://openai.com/blog/openai-baselines-ppo/)
+* [2018, Bart-Maron et al., Distributed Distributional Deterministic Policy Gradients](https://openreview.net/forum?id=SyZipzbCb)
+* [2013, Sergey et al., Guided Policy Search --> GPS](https://graphics.stanford.edu/projects/gpspaper/gps_full.pdf)
+* [2015, van Hasselt et al., Deep Reinforcement Learning with Double Q-learning --> DDQN](https://arxiv.org/abs/1509.06461)
+* [1993, Truhn et al., Issues in Using Function Approximation for Reinforcement Learning](https://www.ri.cmu.edu/pub_files/pub1/thrun_sebastian_1993_1/thrun_sebastian_1993_1.pdf)
+* [2015, Schaul et al., Prioritized Experience Replay --> PER](https://arxiv.org/abs/1511.05952)
+* [2015, Wang et al., Dueling Network Architectures for Deep Reinforcement Learning](https://arxiv.org/abs/1511.06581)
+* [2016, Silver et al., Mastering the game of Go with deep neural networks and tree search](https://www.researchgate.net/publication/292074166_Mastering_the_game_of_Go_with_deep_neural_networks_and_tree_search)
+* [2017, Hessel et al. Rainbow: Combining Improvements in Deep Reinforcement Learning](https://arxiv.org/abs/1710.02298)
+* [2016, Mnih et al., Asynchronous Methods for Deep Reinforcement Learning](https://arxiv.org/abs/1602.01783)
+* [2017, Bellemare et al., A Distributional Perspective on Reinforcement Learning](https://arxiv.org/abs/1707.06887)
+* [2017, Fortunato et al., Noisy Networks for Exploration](https://arxiv.org/abs/1706.10295)
+* [2016, Wang et al., Sample Efficient Actor-Critic with Experience Replay --> ACER](https://arxiv.org/abs/1611.01224)
+* [2017, Lowe et al. Multi-Agent Actor-Critic for MixedCooperative-Competitive Environments](https://papers.nips.cc/paper/2017/file/68a9750337a418a86fe06c1991a1d64c-Paper.pdf)
+* [2017, Silver et al. Mastering the Game of Go without Human Knowledge --> AlphaGo Zero](https://discovery.ucl.ac.uk/id/eprint/10045895/1/agz_unformatted_nature.pdf)
+* [2017, Silver et al., Mastering Chess and Shogi by Self-Play with aGeneral Reinforcement Learning Algorithm --> AlphaZero](https://arxiv.org/pdf/1712.01815.pdf)
